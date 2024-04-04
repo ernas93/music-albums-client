@@ -1,7 +1,15 @@
+import { useState, useCallback } from 'react';
 import { useParams } from 'react-router';
 import { Card, Button, Row, Col } from 'react-bootstrap';
+import { EditAlbumModal } from '../edit-album-modal/edit-album-modal';
 
 export const AlbumView = ({ albums }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = useCallback(() => {
+    setShowModal(!showModal);
+  });
+
   if (!albums.length) {
     return <div>Loading...</div>;
   }
@@ -27,10 +35,19 @@ export const AlbumView = ({ albums }) => {
           <Col sm={8}>
             <Card.Title>{album.name}</Card.Title>
             <Card.Subtitle>{album.artist}</Card.Subtitle>
-            <Card.Text>Release Date: {album.releaseDate}</Card.Text>
+            <Card.Text>
+              Release Date:{' '}
+              {new Date(album.releaseDate).toLocaleDateString('de-DE')}
+            </Card.Text>
+            <Button onClick={toggleModal}>Edit album</Button>
           </Col>
         </Row>
       </Card.Body>
+      <EditAlbumModal
+        show={showModal}
+        onClose={toggleModal}
+        album={album}
+      ></EditAlbumModal>
     </Card>
   );
 };
