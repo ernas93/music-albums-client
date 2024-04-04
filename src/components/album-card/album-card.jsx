@@ -1,6 +1,5 @@
-import { Card } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import { Link } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export const AlbumCard = ({ album }) => {
   return (
@@ -10,8 +9,8 @@ export const AlbumCard = ({ album }) => {
         <Card.Title>{album.name}</Card.Title>
         <Card.Text>Artist: {album.artist}</Card.Text>
         <Card.Text>Release Date: {album.releaseDate}</Card.Text>
-        <Link>
-          <Button></Button>
+        <Link to={`/album/${album.id}`}>
+          <Button variant="link">See details</Button>
         </Link>
       </Card.Body>
     </Card>

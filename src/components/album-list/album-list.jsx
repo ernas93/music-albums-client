@@ -4,7 +4,7 @@ export const AlbumList = ({ albums }) => {
   return (
     <div>
       {albums.map((album) => {
-        return <AlbumCard album={album}></AlbumCard>;
+        return <AlbumCard album={album} key={album.id}></AlbumCard>;
       })}
     </div>
   );
