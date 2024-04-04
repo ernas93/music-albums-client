@@ -31,26 +31,19 @@ export const EditAlbumModal = ({ show, onClose, album }) => {
       headers: {
         'Content-Type': 'application/json',
       },
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log('response', response);
-          return response.json();
-        } else {
-          alert('Failed to add new album!');
-        }
-      })
-      .then((album) => {
-        if (album) {
-          window.location.reload();
-        }
-      });
+    }).then((response) => {
+      if (response.ok) {
+        window.location.reload();
+      } else {
+        alert('Failed to add new album!');
+      }
+    });
   });
 
   return (
     <Modal show={show} onHide={onClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Edit {album.albumName}</Modal.Title>
+        <Modal.Title>Edit: {album.name}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={onSubmit}>

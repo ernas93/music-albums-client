@@ -2,10 +2,12 @@ import { useState, useCallback } from 'react';
 import { useParams } from 'react-router';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 import { EditAlbumModal } from '../edit-album-modal/edit-album-modal';
+import { DeleteAlbum } from '../delete-album/delete-album';
 
 export const AlbumView = ({ albums }) => {
   const [showModal, setShowModal] = useState(false);
-
+  // get the id from the path routes params
+  const { id } = useParams();
   const toggleModal = useCallback(() => {
     setShowModal(!showModal);
   });
@@ -13,9 +15,6 @@ export const AlbumView = ({ albums }) => {
   if (!albums.length) {
     return <div>Loading...</div>;
   }
-
-  // get the id from the path routes params
-  const { id } = useParams();
 
   const album = albums.find((album) => {
     return album.id === id;
@@ -36,10 +35,11 @@ export const AlbumView = ({ albums }) => {
             <Card.Title>{album.name}</Card.Title>
             <Card.Subtitle>{album.artist}</Card.Subtitle>
             <Card.Text>
-              Release Date:{' '}
+              Release Date:
               {new Date(album.releaseDate).toLocaleDateString('de-DE')}
             </Card.Text>
             <Button onClick={toggleModal}>Edit album</Button>
+            <DeleteAlbum album={album}></DeleteAlbum>
           </Col>
         </Row>
       </Card.Body>

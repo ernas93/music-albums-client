@@ -6,7 +6,10 @@ export const AlbumCard = ({ album }) => {
     <Col sm={6} md={4} lg={3}>
       <Card className="h-100">
         <Card.Body>
-          <Card.Img src={album.image}></Card.Img>
+          <Card.Img
+            style={{ height: '200px', objectFit: 'cover' }}
+            src={album.image}
+          ></Card.Img>
           <Card.Title>{album.name}</Card.Title>
           <Card.Text>Artist: {album.artist}</Card.Text>
           <Link to={`/album/${album.id}`}>

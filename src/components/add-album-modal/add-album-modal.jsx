@@ -23,20 +23,13 @@ export const AddAlbumModal = ({ show, onClose }) => {
       headers: {
         'Content-Type': 'application/json',
       },
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log('response', response);
-          return response.json();
-        } else {
-          alert('Failed to add new album!');
-        }
-      })
-      .then((album) => {
-        if (album) {
-          window.location.reload();
-        }
-      });
+    }).then((response) => {
+      if (response.ok) {
+        window.location.reload();
+      } else {
+        alert('Failed to add new album!');
+      }
+    });
   });
 
   return (
