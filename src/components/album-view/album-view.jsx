@@ -1,4 +1,5 @@
 import { useParams } from 'react-router';
+import { Card, Button, Row, Col } from 'react-bootstrap';
 
 export const AlbumView = ({ albums }) => {
   if (!albums.length) {
@@ -16,5 +17,20 @@ export const AlbumView = ({ albums }) => {
     return <div>It seems this album doesn't exist in our library.</div>;
   }
 
-  return <div>Hello {album.name}</div>;
+  return (
+    <Card>
+      <Card.Body>
+        <Row>
+          <Col sm={4}>
+            <Card.Img src={album.image}></Card.Img>
+          </Col>
+          <Col sm={8}>
+            <Card.Title>{album.name}</Card.Title>
+            <Card.Subtitle>{album.artist}</Card.Subtitle>
+            <Card.Text>Release Date: {album.releaseDate}</Card.Text>
+          </Col>
+        </Row>
+      </Card.Body>
+    </Card>
+  );
 };

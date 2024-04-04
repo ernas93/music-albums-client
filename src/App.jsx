@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import { MainView } from './components/main-view/main-view';
 import { AlbumView } from './components/album-view/album-view';
+import { NavigationBar } from './components/navigation-bar/navigation-bar';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <NavigationBar></NavigationBar>
       <Routes>
         <Route path="/" element={<MainView albums={albums}></MainView>}></Route>
         <Route
