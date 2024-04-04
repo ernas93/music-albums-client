@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
+import { AlbumList } from '../album-list/album-list';
 
 export const MainView = () => {
-  const [album, setAlbum] = useState([]);
+  const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:3000/albums')
@@ -15,15 +16,16 @@ export const MainView = () => {
             name: album.AlbumName,
             artist: album.ArtistName,
             image: album.ImagePath,
+            releaseDate: album.ReleaseDate,
             ratings: album.Ratings,
           };
         });
-        setAlbum(albumsFromApi);
+        setAlbums(albumsFromApi);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
-  return <div>Hello</div>;
+  return <AlbumList albums={albums}></AlbumList>;
 };
