@@ -1,6 +1,10 @@
 import { useParams } from 'react-router';
 
 export const AlbumView = ({ albums }) => {
+  if (!albums.length) {
+    return <div>Loading...</div>;
+  }
+
   // get the id from the path routes params
   const { id } = useParams();
 
