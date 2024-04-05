@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { Container, Nav, Navbar, Button } from 'react-bootstrap';
+import { Navbar, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AddAlbumModal } from '../add-album-modal/add-album-modal';
 
@@ -12,7 +12,7 @@ export const NavigationBar = () => {
 
   return (
     <Navbar
-      className="justify-content-between"
+      className="justify-content-between px-4"
       bg="dark"
       variant="dark"
       expand="lg"

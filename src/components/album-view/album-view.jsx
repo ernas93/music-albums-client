@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 import { EditAlbumModal } from '../edit-album-modal/edit-album-modal';
 import { DeleteAlbum } from '../delete-album/delete-album';
+import { RatingStars } from '../rating-stars/rating-stars';
 
 export const AlbumView = ({ albums }) => {
   const [showModal, setShowModal] = useState(false);
@@ -35,9 +36,10 @@ export const AlbumView = ({ albums }) => {
             <Card.Title>{album.name}</Card.Title>
             <Card.Subtitle>{album.artist}</Card.Subtitle>
             <Card.Text>
-              Release Date:
+              Release Date:{' '}
               {new Date(album.releaseDate).toLocaleDateString('de-DE')}
             </Card.Text>
+            <RatingStars album={album} />
             <Button onClick={toggleModal}>Edit album</Button>
             <DeleteAlbum album={album}></DeleteAlbum>
           </Col>
